@@ -1,39 +1,34 @@
 from PIL import Image, ImageChops, ImageEnhance
 
-def edit_image(image): 
+def edit_image(imagename, imageloc, tempfolder): 
     # MOVE IMAGE TO TEMP FOLDER
-    img = Image.open('./screenshots/' + image)
-    img.save('./temp/' + image, 'JPEG')
 
+    img = Image.open(imageloc)
+    img.save(tempfolder + imagename, 'JPEG')
 
     # CROP IMAGE
     width, height = img.size
-    img.crop((0, height/1.5, width, height)).save('./temp/' + image, 'JPEG')
+    img.crop((0, height/1.5, width, height)).save(tempfolder + imagename, 'JPEG')
 
     # MONOCHROME
-    img = Image.open('./temp/' + image)
-    img = img.convert('L').save('./temp/' + image, 'JPEG')
+    img = Image.open(tempfolder + imagename)
+    img = img.convert('L').save(tempfolder + imagename, 'JPEG')
 
     # BRIGHTNESS
-    img = Image.open('./temp/' + image)
+    img = Image.open(tempfolder + imagename)
     im3 = ImageEnhance.Brightness(img) 
-    im3.enhance(0.3).save('./temp/' + image, 'JPEG')
+    im3.enhance(0.3).save(tempfolder + imagename, 'JPEG')
 
     # CONTRAST
-    img = Image.open('./temp/' + image)
+    img = Image.open(tempfolder + imagename)
     im3 = ImageEnhance.Contrast(img) 
-    im3.enhance(10).save('./temp/' + image, 'JPEG')
+    im3.enhance(10).save(tempfolder + imagename, 'JPEG')
 
     # BRIGHTNESS
-    img = Image.open('./temp/' + image)
+    img = Image.open(tempfolder + imagename)
     im3 = ImageEnhance.Brightness(img) 
-    im3.enhance(0.5).save('./temp/' + image, 'JPEG')
+    im3.enhance(0.5).save(tempfolder + imagename, 'JPEG')
 
     # INVERT
-    img = Image.open('./temp/' + image)
-    img = ImageChops.invert(img).save('./temp/' + image, 'JPEG')
-
-    # SHARPNESS
-    #img = Image.open('./temp/' + image)
-    #im3 = ImageEnhance.Sharpness(img) 
-    #im3.enhance(7).save('./temp/' + image, 'JPEG')
+    img = Image.open(tempfolder + imagename)
+    img = ImageChops.invert(img).save(tempfolder + imagename, 'JPEG')
