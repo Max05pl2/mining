@@ -31,9 +31,7 @@ Packages:
 
 ## **Usage:**
 
-Run the script for the first time to create the necessary folders.
+Run the script using the batch file or main.py
 
-1. Place your screeshots in the "screenshots" folder.
-2. Run the script
-
-Output will be in sentences.txt
+1. Select the desired locations and files
+2. Run the script with the "Start" Button
