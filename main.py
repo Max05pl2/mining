@@ -92,7 +92,11 @@ def start_ocr():
         try:
             edit.edit_image(imagename, imagesfolder + '/' + imagename, tempfolder)
             text = ocr.ocr(imagesfolder + '/' + imagename, credentialsfile)
-            savetofile.save_to_file(outputfolder + "/outputsentences.txt", text + "\n")
+
+            imagepath = "<img src='" + imagename +"'>"
+            formated = imagepath + ";" + text + "\n"
+
+            savetofile.save_to_file(outputfolder + "/outputsentences.txt", formated)
             os.remove(tempfolder + imagename)
             filesdone = filesdone + 1
             progresslabel.config(text = "Files processed: " + str(filesdone))
